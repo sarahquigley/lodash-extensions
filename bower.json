@@ -1,5 +1,5 @@
 {
-  "name": "coffeescript-skeleton",
+  "name": "lodash-extensions",
   "ignore": [
     "**/.*",
     "node_modules",
