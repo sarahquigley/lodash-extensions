@@ -8,7 +8,7 @@ module.exports = function(config){
       // bower:js
       'src/bower_components/lodash/lodash.js',
       // endbower
-      'build/main.js',
+      'build/lodash-extensions.js',
       'src/**/*.spec.coffee',
     ],
 
