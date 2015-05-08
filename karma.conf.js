@@ -6,10 +6,10 @@ module.exports = function(config){
     // List of files/patterns to load in the browser
     files : [
       // bower:js
-      'app/bower_components/lodash/lodash.js',
+      'src/bower_components/lodash/lodash.js',
       // endbower
-      '.dev/main.js',
-      'app/**/*.spec.coffee',
+      'build/main.js',
+      'src/**/*.spec.coffee',
     ],
 
     // Enable watching files and executing the tests whenever one of the above files changes
@@ -42,8 +42,7 @@ module.exports = function(config){
 
     // Preprocessors to use
     preprocessors: {
-      'app/**/*.html' : 'html2js',
-      'app/**/*.spec.coffee': 'coffee'
+      'src/**/*.spec.coffee': 'coffee'
     },
 
     // Coffeescript preprocessor config

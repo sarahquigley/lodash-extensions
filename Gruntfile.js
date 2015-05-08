@@ -8,15 +8,15 @@ module.exports = function(grunt) {
   // Configure variables for use across grunt tasks
   var config = {
     dirs: {
-      app: 'app',
-      dev: '.dev'
+      src: 'src',
+      build: 'build'
     },
     files: {
       scripts: [
-        '<%= config.dirs.app %>/main.coffee',
+        '<%= config.dirs.src %>/main.coffee',
       ],
       tests: [
-        '<%= config.dirs.app %>/**/*.spec.coffee'
+        '<%= config.dirs.src %>/**/*.spec.coffee'
       ]
     }
   };
@@ -27,18 +27,17 @@ module.exports = function(grunt) {
     config: config,
 
     // Clean tasks    - For erasing contents of specified directories
-    // clean:dev      - Clean temporary directory created for holding compiled files during development
+    // clean:build      - Clean build directory (location of compiled files)
     clean: {
-      dev: [config.dirs.dev],
-      test: [config.dirs.test]
+      build: [config.dirs.build]
     },
 
     // Coffee tasks   - Coffeescript compilation
-    // coffee:dev     - Compile coffeescript files to temporary directory during development
+    // coffee:build     - Compile coffeescript files to build directory
     coffee: {
-      dev: {
+      build: {
         files: {
-          '<%= config.dirs.dev %>/main.js': config.files.scripts
+          '<%= config.dirs.build %>/main.js': config.files.scripts
         }
       }
     },
@@ -53,28 +52,6 @@ module.exports = function(grunt) {
         ],
         options: {
           logConcurrentOutput: true
-        }
-      }
-    },
-
-    // Connect task
-    // connect:livereload - Serve site on port 9000
-    connect: {
-      options: {
-        port: 9000,
-        hostname: 'localhost', // Change this to '0.0.0.0' to access the server from outside.
-        livereload: 35729
-      },
-
-      livereload: {
-        options: {
-          open: true, // open page in default browser
-          middleware: function (connect) {
-            return [
-              connect.static(config.dirs.dev),
-              connect.static(config.dirs.app)
-            ];
-          }
         }
       }
     },
@@ -96,66 +73,24 @@ module.exports = function(grunt) {
       }
     },
 
-    // Sass tasks    - SCSS and SASS compilation
-    // sass:dev      - Compile .scss and .sass files to temporary directory during development
-    sass: {
-      dev: {
-        files: [{
-          expand: true,
-          cwd: '<%= config.dirs.app %>/styles',
-          src: ['**/*.{scss,sass}'],
-          dest: '<%= config.dirs.dev %>/styles',
-          ext: '.css'
-        }]
-      }
-    },
-
     // Watch tasks      - Watch for changes in specified directories, and re-run specified task(s)
     // watch:coffee     - Watch coffeescript files, re-compile coffeescripts
-    // watch:sass       - Watch .scss and .sass files, re-compile on change
     // watch:wiredep    - Watch bower.json for new bower_components, and inject new dependencies
-    // watch:livereload - Trigger livereload on update of html or scripts
     watch: {
-      options: {
-        livereload: true
-      },
-
       coffee: {
         files: config.files.scripts,
-        tasks: ['coffee:dev']
-      },
-
-      livereload: {
-        options: {
-          livereload: '<%= connect.options.livereload %>'
-        },
-        files: [
-          '<%= config.dirs.app %>/**/*.html',
-          '<%= config.dirs.dev %>/**/*.js'
-        ]
-      },
-
-      sass: {
-        files: [
-          '<%= config.dirs.app %>/styles/**/*.{scss,sass}'
-        ],
-        tasks: ['sass']
+        tasks: ['coffee:build']
       },
 
       wiredep: {
         files: ['bower.json'],
-        tasks: ['wiredep:dev', 'wiredep:test']
+        tasks: ['wiredep:test']
       }
     },
 
     // Wiredep tasks    - Inject bower dependencies automatically into source code
-    // wiredep:dev      - Inject bower dependencies into html pages
     // wiredep:test     - Inject bower dependencies into karma config
     wiredep: {
-      dev: {
-        src: ['<%= config.dirs.app %>/index.html']
-      },
-
       test:{
         src: 'karma.conf.js',
         fileTypes: {
@@ -187,16 +122,16 @@ module.exports = function(grunt) {
 
     grunt.task.run([
       'wiredep:test',
-      'clean:dev',
-      'coffee:dev',
+      'clean:build',
+      'coffee:build',
       'karma:single'
     ]);
   });
 
-  // serve          - Compile site assets, serve site
-  //    [--test]              - run unit tests concurrently
+  // build            - Compile files to build directory, watch files for changes, optionally run tests concurrently
+  //    [--test]              - Run unit tests concurrently
   //    [--no-install-deps]   - Skip dependency installation.
-  grunt.registerTask('serve', 'Compile, serve, optionally run tests', function(){
+  grunt.registerTask('build', 'Build, optionally run tests', function(){
     if(! grunt.option('no-install-deps')){
       grunt.task.run([
         'npm-install',
@@ -204,11 +139,8 @@ module.exports = function(grunt) {
     }
 
     grunt.task.run([
-      'clean:dev',
-      'coffee:dev',
-      'sass:dev',
-      'wiredep:dev',
-      'connect:livereload'
+      'clean:build',
+      'coffee:build',
     ]);
 
     if(grunt.option('test')){
@@ -222,5 +154,5 @@ module.exports = function(grunt) {
   });
 
   // default task   - run by grunt when no task is specified
-  grunt.registerTask('default', 'serve');
+  grunt.registerTask('default', 'build');
 };
