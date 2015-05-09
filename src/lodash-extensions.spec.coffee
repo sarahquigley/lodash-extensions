@@ -38,5 +38,5 @@ describe 'Utilities', ->
       it 'should give correct value with nested objects and arrays', ->
         item = {test: {one: 1, two: 2}, test1: {one: [1, 1], two: [2, 2]}}
         other = {test: {one: 1, three: 3}, test1: {one: [1, 2], two: [2, 1]}}
-        expect(_.isEqualIgnoringFxn(item, item)).toBe(true)
+        expect(_.isEqualIgnoringFxn(item, _.cloneDeep(item))).toBe(true)
         expect(_.isEqualIgnoringFxn(item, other)).toBe(false)
