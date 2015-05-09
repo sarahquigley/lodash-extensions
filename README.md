@@ -3,6 +3,15 @@
 A library of extensions for lodash.js.
 
 
+## Installation
+
+This package can be installed via bower:
+
+```
+bower install lodash-extensions
+```
+
+
 ## Installing dependencies
 
 
