@@ -2,7 +2,7 @@
   "name": "lodash-extensions",
   "version": "0.0.0",
   "private": false,
-  "main": "build/main.js",
+  "main": "build/lodash-extensions.js",
   "ignore": [
     "**/.*",
     "node_modules",

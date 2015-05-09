@@ -13,7 +13,7 @@ module.exports = function(grunt) {
     },
     files: {
       scripts: [
-        '<%= config.dirs.src %>/main.coffee',
+        '<%= config.dirs.src %>/lodash-extensions.coffee',
       ],
       tests: [
         '<%= config.dirs.src %>/**/*.spec.coffee'
@@ -37,7 +37,7 @@ module.exports = function(grunt) {
     coffee: {
       build: {
         files: {
-          '<%= config.dirs.build %>/main.js': config.files.scripts
+          '<%= config.dirs.build %>/lodash-extensions.js': config.files.scripts
         }
       }
     },
