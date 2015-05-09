@@ -29,15 +29,6 @@ sudo npm install -g grunt-cli
 ```
 
 
-### Install SASS Ruby Gem
-
-This gem is required for compilation of `.scss` and `.sass` files to `.css`. Before installing the gem, ensure Ruby and Ruby's Gem package manager are installed. Then, install the `sass` gem: 
-
-```
-sudo gem install sass
-```
-
-
 ### Install Project Specific Dependencies
 
 This project has two kinds of dependencies: tools and libraries.
@@ -82,21 +73,21 @@ Unit tests are written in [Jasmine 2.0](http://jasmine.github.io/), and run with
 ## Grunt tasks
 
 
-### grunt serve
+### grunt build 
 
-This tasks compiles all of the application's assets and serves the application.
+This tasks compiles Coffeescript source files to Javascript in the build directory. It watches those files for changes, and re-compiles them on change.
 
 This is the default grunt task.
 
-Command: `grunt` or `grunt serve`.
+Command: `grunt` or `grunt build`.
 
-This task also gives you the option of running unit tests and serving the application simultaneously. Tests will automatically re-run in response to changes in thesource code / specs.
+This task also gives you the option of running unit tests and compiling Coffeescript source files simultaneously. Tests will automatically re-run in response to changes in the source code / specs.
 
-Command: `grunt --test` or `grunt serve --test`
+Command: `grunt --test` or `grunt build --test`
 
 
 ### grunt test
 
-This task runs a single run of unit tests, and outputs the result to the console.
+This tasks compiles Coffeescript source files to Javascript in the build directory, and runs a single run of unit tests, outputing the test results to the console. Changes to files are not watched and the task terminates as soon as the unit tests complete.
 
 Command: `grunt test`
