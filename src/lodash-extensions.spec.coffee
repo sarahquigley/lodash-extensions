@@ -40,3 +40,9 @@ describe 'Utilities', ->
         other = {test: {one: 1, three: 3}, test1: {one: [1, 2], two: [2, 1]}}
         expect(_.isEqualIgnoringFxn(item, _.cloneDeep(item))).toBe(true)
         expect(_.isEqualIgnoringFxn(item, other)).toBe(false)
+
+      xit 'should work with cyclic objects', ->
+        item = {}
+        other = {field: item}
+        item.field = other
+        expect(_.isEqualIgnoringFxn(item, other)).toBe(false)
