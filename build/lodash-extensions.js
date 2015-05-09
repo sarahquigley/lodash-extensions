@@ -1,21 +1,18 @@
 (function() {
   _.isEqualIgnoringFxn = function(item, other) {
-    var equality;
+    var item_keys;
     if (typeof item !== typeof other) {
       return false;
     } else if (_.isFunction(item)) {
       return true;
     } else if (_.isObject(item)) {
-      if (_.keys(item).length !== _.keys(other).length) {
+      item_keys = _.keys(item);
+      if (item_keys.length !== _.keys(other).length) {
         return false;
       }
-      equality = true;
-      _.each(item, function(value, key) {
-        if (!_.isEqualIgnoringFxn(value, other[key])) {
-          return equality = false;
-        }
+      return _.all(item_keys, function(key) {
+        return _.isEqualIgnoringFxn(item[key], other[key]);
       });
-      return equality;
     } else {
       return _.isEqual(item, other);
     }

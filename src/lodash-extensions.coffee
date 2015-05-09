@@ -6,12 +6,10 @@ _.isEqualIgnoringFxn = (item, other) ->
     return true
 
   else if _.isObject(item)
-    return false if _.keys(item).length != _.keys(other).length
-    equality = true
-    _.each item, (value, key) ->
-      if !_.isEqualIgnoringFxn(value, other[key])
-        equality = false
-    return equality
+    item_keys = _.keys(item)
+    return false if item_keys.length != _.keys(other).length
+    return _.all item_keys, (key) ->
+      _.isEqualIgnoringFxn(item[key], other[key])
 
   else
     return _.isEqual(item, other)
