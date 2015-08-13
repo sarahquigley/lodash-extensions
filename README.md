@@ -12,7 +12,13 @@ A library of extensions for lodash.js.
 This package can be installed via bower:
 
 ```
-bower install lodash-extensions
+bower install lodash-extensions --save
+```
+
+This package can be installed via npm:
+
+```
+npm install lodash-extensions --save
 ```
 
 
