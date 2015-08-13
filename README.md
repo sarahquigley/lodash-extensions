@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/sarahquigley/lodash-extensions.svg)](https://travis-ci.org/sarahquigley/lodash-extensions)
 [![Dependency Status](https://gemnasium.com/sarahquigley/lodash-extensions.svg)](https://gemnasium.com/sarahquigley/lodash-extensions)
 [![devDependency Status](https://david-dm.org/sarahquigley/lodash-extensions/dev-status.svg)](https://david-dm.org/sarahquigley/lodash-extensions#info=devDependencies)
+[![GitHub release](https://img.shields.io/github/release/sarahquigley/lodash-extensions.svg)](https://github.com/sarahquigley/lodash-extensions/releases)
 
 A library of extensions for lodash.js.
 
