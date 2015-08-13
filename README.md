@@ -1,5 +1,9 @@
 # lodash-extensions
 
+[![Build Status](https://travis-ci.org/sarahquigley/lodash-extensions.svg)](https://travis-ci.org/sarahquigley/lodash-extensions)
+[![Dependency Status](https://gemnasium.com/sarahquigley/lodash-extensions.svg)](https://gemnasium.com/sarahquigley/lodash-extensions)
+[![devDependency Status](https://david-dm.org/sarahquigley/lodash-extensions/dev-status.svg)](https://david-dm.org/sarahquigley/lodash-extensions#info=devDependencies)
+
 A library of extensions for lodash.js.
 
 
@@ -29,13 +33,17 @@ For other distributions, you will not need the nodejs-legacy package. For inform
 [Installing node.js via package manager](https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager)
 
 
-### Install Grunt Client
+### Install Grunt Client (Optional)
 
-To use the `grunt-cli`, it must be installed globally.
+To use the `grunt-cli`, it is easiest if it is installed globally.
 
 ```
 sudo npm install -g grunt-cli
 ```
+
+If you do not wish to install the `grunt-cli`, a script (see `grunt` file in project root) has been included. This allows you to use the local `grunt-cli` installation to run `grunt` commands. To do so, replace `grunt` in all `grunt` commands with `./grunt`.
+
+e.g. `grunt` becomes `./grunt`, `grunt build` becomes `./grunt build`
 
 
 ### Install Project Specific Dependencies
@@ -80,6 +88,10 @@ Unit tests are written in [Jasmine 2.0](http://jasmine.github.io/), and run with
 
 
 ## Grunt tasks
+
+Note: if using local grunt (described above), replace `grunt` in all commands listed below with `./grunt`.
+
+e.g. `grunt build` becomes `./grunt build`
 
 
 ### grunt build 

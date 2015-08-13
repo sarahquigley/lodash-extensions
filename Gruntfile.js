@@ -59,6 +59,7 @@ module.exports = function(grunt) {
     // Karma - test runner
     // karma:concurrent   - Run test in the background
     // karma:single       - Run tests once
+    // karma:continuous-integration  - Run tests only in headless browsers, for use during continuous integration
     karma: {
       options: {
         configFile: 'karma.conf.js'
@@ -70,6 +71,11 @@ module.exports = function(grunt) {
       // Run tests once
       single: {
         singleRun: true
+      },
+      // Run only in headless browsers
+      'continuous-integration': {
+        singleRun: true,
+        browsers: ['PhantomJS'],
       }
     },
 

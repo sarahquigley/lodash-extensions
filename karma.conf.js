@@ -17,32 +17,36 @@ module.exports = function(config){
 
     frameworks: [
       'jasmine',
-      'jasmine-matchers'
+      'jasmine-matchers',
     ],
 
     // List of browsers to launch and capture
-    browsers : ['Chrome'],
+    browsers : [
+      'Chrome',
+      'PhantomJS',
+    ],
 
     plugins : [
       'karma-chrome-launcher',
       'karma-firefox-launcher',
+      'karma-phantomjs-launcher',
       'karma-jasmine',
       'karma-jasmine-matchers',
       'karma-jasmine-html-reporter',
       'karma-mocha-reporter',
       'karma-coffee-preprocessor',
-      'karma-ng-html2js-preprocessor'
+      'karma-ng-html2js-preprocessor',
     ],
 
     // List of reporters to use
     reporters: [
       'html',
-      'mocha'
+      'mocha',
     ],
 
     // Preprocessors to use
     preprocessors: {
-      'src/**/*.spec.coffee': 'coffee'
+      'src/**/*.spec.coffee': 'coffee',
     },
 
     // Coffeescript preprocessor config
@@ -50,7 +54,7 @@ module.exports = function(config){
       // options passed to the coffee compiler
       options: {
         bare: true,
-        sourceMap: false
+        sourceMap: false,
       },
       // transforming the filenames
       transformPath: function(path) {
