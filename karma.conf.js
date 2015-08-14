@@ -50,7 +50,7 @@ module.exports = function(config){
     // Preprocessors to use
     preprocessors: {
       'src/**/*.spec.coffee': 'coffee',
-      'build/main.js': 'coverage',
+      'build/lodash-extensions.js': 'coverage',
     },
 
     coverageReporter: {
