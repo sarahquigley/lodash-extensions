@@ -1,7 +1,10 @@
 language: node_js
 node_js:
-  - "0.10"
+- '0.10'
 before_script:
-  - npm install
+- npm install
 script:
-  - ./grunt karma:continuous-integration
+- "./grunt karma:continuous-integration"
+env:
+  matrix:
+  - secure: HQ4UVMwFIvDNQeK4JgzuRiENI3in9cNODjql8e1lKnldALcM1O0qw+BdVA8haRRxjRP/R0XQ4ixK1JJbz8Qh4iza+U/KNv3dBKLw3ok07pfuCRtIBVqGDtiC75KI77V7T+0g5CkvSnMmO4jK5ORnzBRv9FsWzKrxxjay8um9xscrzp105Se9pm1eydeEUUiGjaK6Oh9dnJnQ18wktD83Cnmhxxgm017aeomyQIjKEbmgrbvtObrF3+tyCfSAkcRI5kx2mowhOUE3MyaZRUaJtI87o5ID4Hq53WerDFdVXpEyJsB/1eKySTaBND7Y01PuzH+c3JYBK8iv3z426EqVkiwQ7WVLyrRRjDGfe6/mYNEqvd5iVSvtYALJZ2HFpGtH7jEetKxKzX0PsQE6XQcSnCU+kO5+NxMJC/MOlmypLAnVLGJB/Tuzc6tequrJJwQDrQGqlAc3sp87Yo5IlixhZywyNAseTG9OPMqGtm0EpljCG2/YriusuIezeMeeFqYbn8dvcPWHICxHtpO6+4cUpKNAa4yzx+56TTpFjmmK2LEeIVsmDMjTkHr7P6ZL0rcdBLwwDMRqpU4XvHEkjyzypGYruAafhkMLSuvoP1yzvvVVLN6+VgqhFwDBSLpc1mgyFTbz/Y9a8kDdNkBJdkhLyEDKh8rZmhBFeI1tsbeedSU=

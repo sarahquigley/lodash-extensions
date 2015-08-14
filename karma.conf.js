@@ -36,17 +36,26 @@ module.exports = function(config){
       'karma-mocha-reporter',
       'karma-coffee-preprocessor',
       'karma-ng-html2js-preprocessor',
+      'karma-coverage',
+      'karma-coveralls',
     ],
 
     // List of reporters to use
     reporters: [
       'html',
       'mocha',
+      'coverage',
     ],
 
     // Preprocessors to use
     preprocessors: {
       'src/**/*.spec.coffee': 'coffee',
+      'build/main.js': 'coverage',
+    },
+
+    coverageReporter: {
+      type: 'lcov',
+      dir: 'coverage/'
     },
 
     // Coffeescript preprocessor config
@@ -63,4 +72,8 @@ module.exports = function(config){
     }
 
   });
+
+  if (process.env.TRAVIS) {
+    config.reporters.push('coveralls');
+  }
 };
